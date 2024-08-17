@@ -86,7 +86,7 @@ button {
     -ms-flex-item-align: end;
     align-self: end;
     grid-column: 1 / span 13;
-    grid-row: 9 / span 2;
+    grid-row: 9 / span 4;
     padding: 0 4vw;
     place-self: center;
     text-align: center; }
