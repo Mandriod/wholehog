@@ -69,6 +69,8 @@ button {
 .c-title {
   gap: 0;
   background: none;
+  -webkit-backdrop-filter: blur(0.75em);
+  backdrop-filter: blur(0.75em);
   -webkit-box-shadow: 0 0 4em black;
   box-shadow: 0 0 4em black;
   isolation: isolate; }
@@ -106,20 +108,24 @@ button {
     position: relative;
     text-align: center;
     width: 100%; }
-  .c-title .js-container-lg:before {
-    -webkit-box-shadow: 0 0 4em black;
-    box-shadow: 0 0 4em black;
-    content: '';
-    inset: 0;
-    position: absolute;
-    z-index: -1; }
-  .c-title .js-container-sm:before {
-    -webkit-box-shadow: 0 0 4em black;
-    box-shadow: 0 0 4em black;
-    content: '';
-    inset: 0;
-    position: absolute;
-    z-index: -1; }
+  .c-title .js-container-lg {
+    z-index: 1; }
+    .c-title .js-container-lg:before {
+      -webkit-box-shadow: 0 0 4em black;
+      box-shadow: 0 0 4em black;
+      content: '';
+      inset: 0;
+      position: absolute;
+      z-index: -1; }
+  .c-title .js-container-sm {
+    z-index: 0; }
+    .c-title .js-container-sm:before {
+      -webkit-box-shadow: 0 0 4em black;
+      box-shadow: 0 0 4em black;
+      content: '';
+      inset: 0;
+      position: absolute;
+      z-index: -1; }
 
 .c-game {
   background: #EAE9E4;
@@ -261,10 +267,14 @@ button {
 
 @-webkit-keyframes startgame {
   to {
+    -webkit-backdrop-filter: blur(0);
+    backdrop-filter: blur(0);
     display: none; } }
 
 @keyframes startgame {
   to {
+    -webkit-backdrop-filter: blur(0);
+    backdrop-filter: blur(0);
     display: none; } }
 
 .js-container-lg {

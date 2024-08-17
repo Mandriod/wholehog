@@ -51,6 +51,7 @@ button {
 .c-title {
   gap: 0;
   background: none;
+  backdrop-filter: blur(.75em);
   box-shadow: 
   0 0 4em black;
   isolation: isolate;
@@ -87,6 +88,7 @@ button {
   }
 
   .js-container-lg {
+    z-index: 1;
       &:before {
         box-shadow: 
         0 0 4em black;
@@ -98,6 +100,7 @@ button {
   }
 
   .js-container-sm {
+    z-index: 0;
     &:before {
       box-shadow: 
       0 0 4em black;
@@ -296,6 +299,7 @@ button {
 
 @keyframes startgame {
   to {
+    backdrop-filter: blur(0);
     display: none;
   }
 }
