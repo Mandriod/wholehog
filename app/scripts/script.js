@@ -96,6 +96,8 @@ btnHold.addEventListener('click', function () {
 btnStart.addEventListener('click', function(){
   init();
   document.querySelector('.js-title').classList.add('js-start');
+  document.querySelector('.js-title__logo').classList.add('js-container-lg');
+  document.querySelector('.js-title__copy').classList.add('js-container-sm');
 });
 
 btnNew.addEventListener('click', function(){

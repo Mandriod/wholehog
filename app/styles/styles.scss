@@ -49,9 +49,11 @@ button {
 // title
 
 .c-title {
-  row-gap: 2vw;
+  gap: 0;
+  background: none;
   box-shadow: 
-    0 0 4em black;
+  0 0 4em black;
+  isolation: isolate;
 
   &__logo {
     background: $red;
@@ -70,19 +72,40 @@ button {
   }
 
   &__copy {
-    align-self: end;
+    align-items: center;
+    background: $white;
+    display: flex;
+    flex-direction: column;
     grid-column: 1 / span 13;
     grid-row: 9 / span 4;
+    height: 100%;
+    justify-content: center;
     padding: 0 4vw;
-    place-self: center;
+    position: relative;
     text-align: center;
+    width: 100%;
   }
 
-  &__instructions {
-    grid-column: 1 / span 13;
-    grid-row: 11 / last-line;
-    padding: 0 4vw 4vw;
-    place-self: end;
+  .js-container-lg {
+      &:before {
+        box-shadow: 
+        0 0 4em black;
+        content: '';
+        inset: 0;
+        position: absolute;
+        z-index: -1;
+      }
+  }
+
+  .js-container-sm {
+    &:before {
+      box-shadow: 
+      0 0 4em black;
+      content: '';
+      inset: 0;
+      position: absolute;
+      z-index: -1;
+    }
   }
 }
 
@@ -272,15 +295,38 @@ button {
 }
 
 @keyframes startgame {
-  0% {
-    translate: 0 0;
-  }
-  100% {
+  to {
     display: none;
-    translate: 0 -120vh;
   }
 }
 
+.js-container-lg {
+  animation: startlg 1s ease-in-out forwards;
+}
+
+.js-container-sm {
+  animation: startsm 1s ease-in-out forwards;
+}
+
+@keyframes startlg {
+    0% {
+      translate: 0 0;
+    }
+    100% {
+      display: none;
+      translate: 0 -90vh;
+    }
+  }
+
+  @keyframes startsm {
+    0% {
+      translate: 0 0;
+    }
+    100% {
+      display: none;
+      translate: 0 50vh;
+    }
+  }
 
 
 .js-hidden {
@@ -328,8 +374,7 @@ button {
   // title
 
   .c-title, .c-final {
-    row-gap: 0;
-    column-gap: 2vw;
+    gap: 0;
 
     &__logo {
       background: $red;
@@ -353,24 +398,11 @@ button {
     &__copy {
       grid-column: 11 / last-line;
       grid-row: 1 / last-line;
-      padding: 0;
+      padding: 0 1vw;
       place-self: center start;
-      text-align: left;
 
       h3 {
         font-size: 2.5vw;
-      }
-    }
-
-    &__instructions {
-      grid-column: 11 / last-line;
-      grid-row: 5 / last-line;
-      padding: 0 2vw 4vw 0;
-
-      h4 {
-        font-size: clamp(1.2em, 4vw, 1.8em);
-        margin-bottom: 1vw;
-        text-align: left;
       }
     }
   }
@@ -492,6 +524,26 @@ button {
       }
     }
   }
+
+  @keyframes startlg {
+    0% {
+      translate: 0 0;
+    }
+    100% {
+      display: none;
+      translate: -120vw 0;
+    }
+  }
+
+  @keyframes startsm {
+    0% {
+      translate: 0 0;
+    }
+    100% {
+      display: none;
+      translate: 50vw 0;
+    }
+  }
 }
 
 @media screen and (max-height: 540px) {
@@ -505,12 +557,6 @@ button {
         padding-top: 5vw;
         place-self: start center;
       }
-    }
-
-    &__instructions {
-      grid-column: 1 / 11;
-      grid-row: 11 / span 2;
-      padding: 0 2vw 2vw;
     }
   }
 
