@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Whole Hog</title>
+  </head>
+  <body>
+    <section class="o-grid c-game">
+            <div class="o-players__grid c-player__0 js-player--0">
+              <div class="o-player c-player__0--name"> 
+                <h2>Player One</h2>
+              </div>
+              <div class="o-score__container"> 
+                <p class="o-score js-player__0--score"></p>
+                <h3>Total </h3>
+              </div>
+              <div class="o-current__container">
+                <p class="o-current js-player__0--current"></p>
+                <h4>Current </h4>
+              </div>
+            </div>
+            <div class="o-players__grid c-player__1 js-player--1">
+              <div class="o-player c-player__1--name"> 
+                <h2>Player Two</h2>
+              </div>
+              <div class="o-score__container"> 
+                <p class="o-score js-player__1--score"></p>
+                <h3>Total </h3>
+              </div>
+              <div class="o-current__container">
+                <p class="o-current js-player__1--current"></p>
+                <h4>Current </h4>
+              </div>
+            </div>
+      <div class="c-die"> <img class="c-die__blk js-die--blk" src="images/dice-bk-2.svg" alt=""><img class="c-die__wht js-die--wht" src="images/dice-wt-5.svg" alt="">
+                <div class="c-die__roll">
+                  <button class="c-die--roll js-die--roll">Roll Dice</button>
+                </div>
+                <div class="c-die__hold">
+                  <button class="c-die--hold js-die--hold">Hold Score</button>
+                </div>
+      </div>
+    </section>
+    <section class="o-grid c-title js-title">
+      <div class="c-title__logo js-container-lg">
+        <div class="c-title__logo--container"><img src="images/logo.svg" alt="">
+          <h1>Whole <br> Hog</h1>
+        </div>
+      </div>
+      <div class="c-title__copy js-container-sm">
+        <h3>Are you all in?</h3>
+        <button class="js-btn--start">Start Game</button>
+      </div>
+    </section>
+    <section class="o-grid c-final js-final js-hidden">
+      <div class="c-final__logo"> 
+        <div class="c-final__logo--container"> <img src="images/logo.svg" alt="">
+          <h1>Player<br><span class="js-winner">Two </span><br>Wins!</h1>
+        </div>
+      </div>
+      <div class="c-final__copy"> 
+        <h3>New Game?</h3>
+        <button class="js-btn--new">New Game</button>
+      </div>
+    </section>
+  </body>
+  <script src="../scripts/script.js"></script>
+</html>

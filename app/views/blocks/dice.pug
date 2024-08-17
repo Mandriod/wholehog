@@ -1,0 +1,4 @@
+mixin die(dice, name)
+  - var className = `${dice}`
+  div(class= `.c-die__${className}`)
+    button(class= `.c-die--${dice}`) #{name}

@@ -1,0 +1,10 @@
+section.o-grid.c-game
+  include ../blocks/mixins
+  +players(0, 'One')
+  +players(1, 'Two')
+  .c-die 
+    img.c-die__blk.js-die--blk(src="images/dice-bk-2.svg", alt="")
+    img.c-die__wht.js-die--wht(src="images/dice-wt-5.svg", alt="")
+    include ../blocks/mixins
+    +die('roll', 'Roll Dice')
+    +die('hold', 'Hold Score')

@@ -1,0 +1,17 @@
+mixin players(player, name)
+  - var playerName = `Player ${name}`
+
+  .o-players__grid(class= `c-player__${player} js-player--${player}`)
+    .o-player(class= `c-player__${player}--name`) 
+      h2 #{playerName}
+    .o-score__container 
+      p.o-score(class= `js-player__${player}--score`)
+      h3 Total 
+    .o-current__container
+      p.o-current(class= `js-player__${player}--current`)
+      h4 Current 
+
+mixin die(dice, name)
+  - var className = `${dice}`
+  div(class= `c-die__${className}`)
+    button(class= `c-die--${dice} js-die--${dice}`) #{name}
