@@ -176,8 +176,6 @@ button {
   }
 
   .js-rules--open {
-    // animation: rules .5s ease-in-out forwards;
-    // display: block;
     opacity: 1;
     translate: unset;
     transition: translate 1s, opacity .25s;
@@ -496,6 +494,27 @@ button {
       h3 {
         font-size: 2.5vw;
       }
+    }
+  }
+
+  .c-title {
+    .c-rules {
+      height: fit-content;
+      inset: 50% 15vw 50% 45vw;
+      padding: 2em 10vw 2em 2em;
+      transform: translateY(-50%);
+      translate: 100vh 0;
+      transition: translate 1s, opacity 3s;
+
+      &--close {
+        inset: 2em calc(2em + 10vw) auto auto;
+      }
+    }
+  
+    .js-rules--open {
+      opacity: 1;
+      translate: unset;
+      transition: translate 1s, opacity .25s;
     }
   }
 

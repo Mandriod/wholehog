@@ -451,6 +451,24 @@ button {
       place-self: center start; }
       .c-title__copy h3, .c-final__copy h3 {
         font-size: 2.5vw; }
+  .c-title .c-rules {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    inset: 50% 15vw 50% 45vw;
+    padding: 2em 10vw 2em 2em;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    translate: 100vh 0;
+    -webkit-transition: translate 1s, opacity 3s;
+    transition: translate 1s, opacity 3s; }
+    .c-title .c-rules--close {
+      inset: 2em calc(2em + 10vw) auto auto; }
+  .c-title .js-rules--open {
+    opacity: 1;
+    translate: unset;
+    -webkit-transition: translate 1s, opacity .25s;
+    transition: translate 1s, opacity .25s; }
   .c-game h3, .c-game h4 {
     text-align: center;
     margin-top: .5vw; }
