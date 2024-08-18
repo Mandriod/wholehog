@@ -110,6 +110,69 @@ button {
       z-index: -1;
     }
   }
+
+  .c-info {
+    color: $black;
+    cursor: pointer;
+    inset: auto 1em 1em auto;
+    position: absolute;
+
+    h4 {
+      margin: 0;
+      transition: all .5s;
+
+      &:hover {
+        background: darken($white, 10%);
+        border-radius: 100vw;
+        color: $red;
+        transition: all .5s;
+      }
+    }
+  }
+
+  .c-rules {
+    align-items: center;
+    backdrop-filter: blur(.75em);
+    display: grid;
+    grid-column: 1/ last-line;
+    grid-row: 1/ last-line;
+    justify-content: center;
+    padding: 12vw;
+    transition: all .5s;
+    z-index: 0;
+    display: none;
+
+    .c-instructions {
+      background: $white;
+      box-shadow: 
+      0 0 4em black;
+      padding: 2em;
+      position: relative;
+
+      &--close {
+        cursor: pointer;
+        inset: 2em 2em auto auto;
+        position: absolute;
+        transition: all .5s;
+
+        h4 {
+          border-radius: 100vw;
+          height: 1.25em;
+          line-height: 1.25;
+          text-align: center;
+          margin: 0;
+          width: 1.25em;
+        }
+
+        &:hover {
+          background: darken($white, 10%);
+          border-radius: 100vw;
+          color: $red;
+          transition: all .5s;
+        }
+      }
+    }
+  }
 }
 
 // game
