@@ -11,6 +11,8 @@ const btnRoll = document.querySelector('.js-die--roll');
 const btnHold = document.querySelector('.js-die--hold');
 const btnStart = document.querySelector('.js-btn--start');
 const btnNew = document.querySelector('.js-btn--new');
+const btnInfo = document.querySelector('.js-info');
+const btnClose = document.querySelector('.js-close');
 
 let currentPlayer, scores, currentScore, playing;
 
@@ -53,13 +55,11 @@ btnRoll.addEventListener('click', function () {
   if (playing) {
     diceBlk.src = `images/dice-bk-${blkDiceNum}.svg`;
     diceWht.src = `images/dice-wt-${whtDiceNum}.svg`;
-    // dice.classList.remove('hidden');
 
     console.log(blkDiceNum);
     console.log(whtDiceNum);
 
     if (blkDiceNum != 1 && whtDiceNum != 1) {
-      console.log('test');
       currentScore += diceNum;
       document.querySelector(`.js-player__${currentPlayer}--current`).textContent =
         currentScore;
@@ -67,9 +67,7 @@ btnRoll.addEventListener('click', function () {
       scores[`${currentPlayer}`] = 0;
       document.querySelector(`.js-player__${currentPlayer}--score`).textContent =
       scores[`${currentPlayer}`];
-      console.log("lost it all");
     } if (blkDiceNum == 1 || whtDiceNum == 1) {
-      console.log("switch");
       switchPlayer();
     }
   }
@@ -103,4 +101,13 @@ btnStart.addEventListener('click', function(){
 btnNew.addEventListener('click', function(){
   init();
   document.querySelector('.js-final').classList.add('js-start');
+});
+
+btnInfo.addEventListener('click', function(){
+  console.log('clicked');
+  document.querySelector('.js-rules').classList.toggle('js-rules--open');
+});
+
+btnClose.addEventListener('click', function(){
+  document.querySelector('.js-rules').classList.remove('js-rules--open');
 });

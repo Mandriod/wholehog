@@ -75,6 +75,8 @@ button {
   &__copy {
     align-items: center;
     background: $white;
+    box-shadow: 
+    0 2em 4em black;
     display: flex;
     flex-direction: column;
     grid-column: 1 / span 13;
@@ -85,6 +87,7 @@ button {
     position: relative;
     text-align: center;
     width: 100%;
+    z-index: 2;
   }
 
   .js-container-lg {
@@ -116,6 +119,7 @@ button {
     cursor: pointer;
     inset: auto 1em 1em auto;
     position: absolute;
+    z-index: 3;
 
     h4 {
       margin: 0;
@@ -131,29 +135,26 @@ button {
   }
 
   .c-rules {
-    align-items: center;
-    backdrop-filter: blur(.75em);
-    display: grid;
-    grid-column: 1/ last-line;
-    grid-row: 1/ last-line;
-    justify-content: center;
-    padding: 12vw;
-    transition: all .5s;
-    z-index: 0;
-    display: none;
+    background: $white;
+    inset: auto 12vw 33vh 12vw;
+    opacity: 0;
+    padding: 2em;
+    position: absolute;
+    translate: 0 100vh;
+    transition: translate 1s, opacity 3s;
+    z-index: 1;
+
+    &--close {
+      cursor: pointer;
+      inset: 2em 2em auto auto;
+      position: absolute;
+      transition: all 1s;
 
     .c-instructions {
       background: $white;
-      box-shadow: 
-      0 0 4em black;
-      padding: 2em;
       position: relative;
+      z-index: 1;
 
-      &--close {
-        cursor: pointer;
-        inset: 2em 2em auto auto;
-        position: absolute;
-        transition: all .5s;
 
         h4 {
           border-radius: 100vw;
@@ -172,6 +173,19 @@ button {
         }
       }
     }
+  }
+
+  .js-rules--open {
+    // animation: rules .5s ease-in-out forwards;
+    // display: block;
+    opacity: 1;
+    translate: unset;
+    transition: translate 1s, opacity .25s;
+  }
+
+  .js-hidden {
+    display: none;
+    transition: all 1s;
   }
 }
 
@@ -367,12 +381,23 @@ button {
   }
 }
 
+// js/css animations
+
 .js-container-lg {
   animation: startlg 1s ease-in-out forwards;
 }
 
 .js-container-sm {
   animation: startsm 1s ease-in-out forwards;
+}
+
+@keyframes rules {
+  0% {
+    translate: 0 100vh;
+  }
+  100% {
+    translate: 0 5vh;
+  }
 }
 
 @keyframes startlg {
@@ -395,10 +420,10 @@ button {
     }
   }
 
-
-.js-hidden {
-  display: none;
-}
+  .js-hidden {
+    display: none;
+    transition: all .5s;
+  }
 
 @media screen and (min-width: 600px) {
   .c-game {

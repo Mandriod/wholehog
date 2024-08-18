@@ -99,6 +99,8 @@ button {
     -ms-flex-align: center;
     align-items: center;
     background: #EAE9E4;
+    -webkit-box-shadow: 0 2em 4em black;
+    box-shadow: 0 2em 4em black;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -115,7 +117,8 @@ button {
     padding: 0 4vw;
     position: relative;
     text-align: center;
-    width: 100%; }
+    width: 100%;
+    z-index: 2; }
   .c-title .js-container-lg {
     z-index: 1; }
     .c-title .js-container-lg:before {
@@ -138,7 +141,8 @@ button {
     color: #000000;
     cursor: pointer;
     inset: auto 1em 1em auto;
-    position: absolute; }
+    position: absolute;
+    z-index: 3; }
     .c-title .c-info h4 {
       margin: 0;
       -webkit-transition: all .5s;
@@ -150,47 +154,47 @@ button {
         -webkit-transition: all .5s;
         transition: all .5s; }
   .c-title .c-rules {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-backdrop-filter: blur(0.75em);
-    backdrop-filter: blur(0.75em);
-    display: grid;
-    grid-column: 1/ last-line;
-    grid-row: 1/ last-line;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    padding: 12vw;
-    -webkit-transition: all .5s;
-    transition: all .5s;
-    z-index: 0;
-    display: none; }
-    .c-title .c-rules .c-instructions {
-      background: #EAE9E4;
-      -webkit-box-shadow: 0 0 4em black;
-      box-shadow: 0 0 4em black;
-      padding: 2em;
-      position: relative; }
-      .c-title .c-rules .c-instructions--close {
-        cursor: pointer;
-        inset: 2em 2em auto auto;
-        position: absolute;
-        -webkit-transition: all .5s;
-        transition: all .5s; }
-        .c-title .c-rules .c-instructions--close h4 {
+    background: #EAE9E4;
+    inset: auto 12vw 33vh 12vw;
+    opacity: 0;
+    padding: 2em;
+    position: absolute;
+    translate: 0 100vh;
+    -webkit-transition: translate 1s, opacity 3s;
+    transition: translate 1s, opacity 3s;
+    z-index: 1; }
+    .c-title .c-rules--close {
+      cursor: pointer;
+      inset: 2em 2em auto auto;
+      position: absolute;
+      -webkit-transition: all 1s;
+      transition: all 1s; }
+      .c-title .c-rules--close .c-instructions {
+        background: #EAE9E4;
+        position: relative;
+        z-index: 1; }
+        .c-title .c-rules--close .c-instructions h4 {
           border-radius: 100vw;
           height: 1.25em;
           line-height: 1.25;
           text-align: center;
           margin: 0;
           width: 1.25em; }
-        .c-title .c-rules .c-instructions--close:hover {
+        .c-title .c-rules--close .c-instructions:hover {
           background: #d4d2c7;
           border-radius: 100vw;
           color: #D90600;
           -webkit-transition: all .5s;
           transition: all .5s; }
+  .c-title .js-rules--open {
+    opacity: 1;
+    translate: unset;
+    -webkit-transition: translate 1s, opacity .25s;
+    transition: translate 1s, opacity .25s; }
+  .c-title .js-hidden {
+    display: none;
+    -webkit-transition: all 1s;
+    transition: all 1s; }
 
 .c-game {
   background: #EAE9E4;
@@ -350,6 +354,18 @@ button {
   -webkit-animation: startsm 1s ease-in-out forwards;
   animation: startsm 1s ease-in-out forwards; }
 
+@-webkit-keyframes rules {
+  0% {
+    translate: 0 100vh; }
+  100% {
+    translate: 0 5vh; } }
+
+@keyframes rules {
+  0% {
+    translate: 0 100vh; }
+  100% {
+    translate: 0 5vh; } }
+
 @-webkit-keyframes startlg {
   0% {
     translate: 0 0; }
@@ -379,7 +395,9 @@ button {
     translate: 0 50vh; } }
 
 .js-hidden {
-  display: none; }
+  display: none;
+  -webkit-transition: all .5s;
+  transition: all .5s; }
 
 @media screen and (min-width: 600px) {
   .c-game .o-players__grid {
