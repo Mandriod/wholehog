@@ -54,13 +54,13 @@ button {
   backdrop-filter: blur(.75em);
   box-shadow: 
   0 0 4em black;
-  isolation: isolate;
 
   &__logo {
     background: $red;
     display: grid;
     grid-column: 1/ span 13;
     grid-row: 1 / span 8;
+    translate: 0 0 -2px;
 
     &--container{
       place-self: center;
@@ -76,7 +76,7 @@ button {
     align-items: center;
     background: $white;
     box-shadow: 
-    0 2em 4em black;
+    0 0 2em black;
     display: flex;
     flex-direction: column;
     grid-column: 1 / span 13;
@@ -85,9 +85,54 @@ button {
     justify-content: center;
     padding: 0 4vw;
     position: relative;
+    translate: 0 0 1px;
+    transform-style: preserve-3d;
     text-align: center;
     width: 100%;
     z-index: 2;
+
+    .c-rules {
+      background: $white;
+      box-shadow: 
+        0 0 1em black;
+      inset: auto 12vw 33vh 12vw;
+      padding: 2em;
+      position: absolute;
+      text-align: left;
+      translate: 0 200vh -1px;
+      transition: translate 1s;
+      z-index: 1;
+  
+      &--close {
+        cursor: pointer;
+        inset: 2em 2em auto auto;
+        position: absolute;
+        transition: all 1s;
+        z-index: 2;
+  
+        h4 {
+          border-radius: 100vw;
+          height: 1.25em;
+          line-height: 1.25;
+          margin: 0;
+          text-align: center;
+          transition: all .5s;
+          width: 1.25em;
+        
+          &:hover {
+            background: darken($white, 10%);
+            border-radius: 100vw;
+            color: $red;
+            transition: all .5s;
+          }
+        }
+      }
+    }
+    .js-rules--open {
+      translate: 0 0 -1px;
+      transition: translate 1s;
+      z-index: -1;
+    }
   }
 
   .js-container-lg {
@@ -122,9 +167,14 @@ button {
     z-index: 3;
 
     h4 {
+      border-radius: 100vw;
+      height: 1.25em;
+      line-height: 1.25;
       margin: 0;
+      text-align: center;
       transition: all .5s;
-
+      width: 1.25em;
+    
       &:hover {
         background: darken($white, 10%);
         border-radius: 100vw;
@@ -132,53 +182,6 @@ button {
         transition: all .5s;
       }
     }
-  }
-
-  .c-rules {
-    background: $white;
-    inset: auto 12vw 33vh 12vw;
-    opacity: 0;
-    padding: 2em;
-    position: absolute;
-    translate: 0 100vh;
-    transition: translate 1s, opacity 3s;
-    z-index: 1;
-
-    &--close {
-      cursor: pointer;
-      inset: 2em 2em auto auto;
-      position: absolute;
-      transition: all 1s;
-
-    .c-instructions {
-      background: $white;
-      position: relative;
-      z-index: 1;
-
-
-        h4 {
-          border-radius: 100vw;
-          height: 1.25em;
-          line-height: 1.25;
-          text-align: center;
-          margin: 0;
-          width: 1.25em;
-        }
-
-        &:hover {
-          background: darken($white, 10%);
-          border-radius: 100vw;
-          color: $red;
-          transition: all .5s;
-        }
-      }
-    }
-  }
-
-  .js-rules--open {
-    opacity: 1;
-    translate: unset;
-    transition: translate 1s, opacity .25s;
   }
 
   .js-hidden {
@@ -498,22 +501,32 @@ button {
   }
 
   .c-title {
+    &__copy {
+      box-shadow: 
+        0 0 2em black;
+        translate: 0 0 2px;
+      }
+
     .c-rules {
+      box-shadow: 
+        0 0 1em black;
       height: fit-content;
       inset: 50% 15vw 50% 45vw;
       padding: 2em 10vw 2em 2em;
       transform: translateY(-50%);
-      translate: 100vh 0;
-      transition: translate 1s, opacity 3s;
+      translate: 100vw 0 1px;
+      transition: translate 1s;
+      width: 50vw;
+
 
       &--close {
         inset: 2em calc(2em + 10vw) auto auto;
       }
     }
-  
+
     .js-rules--open {
       opacity: 1;
-      translate: unset;
+      translate: -90vw 0 -1px;
       transition: translate 1s, opacity .25s;
     }
   }

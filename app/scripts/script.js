@@ -1,4 +1,9 @@
 'use strict';
+const title = document.querySelector('.js-title');
+const rules = document.querySelector('.js-rules');
+const titleLogo = document.querySelector('.js-title__logo');
+const titleCopy = document.querySelector('.js-title__copy');
+const finalScreen = document.querySelector('.js-final');
 const player0 = document.querySelector('.js-player--0');
 const score0 = document.querySelector('.js-player__0--score');
 const current0 = document.querySelector('.js-player__0--current');
@@ -82,7 +87,7 @@ btnHold.addEventListener('click', function () {
       document
         .querySelector(`.js-player__${currentPlayer}--score`)
         .classList.add('player--winner');
-      document.querySelector('.js-final').classList.remove('js-hidden')
+      finalScreen.classList.remove('js-hidden')
       playing = false;
     } else {
       switchPlayer();
@@ -93,21 +98,24 @@ btnHold.addEventListener('click', function () {
 
 btnStart.addEventListener('click', function(){
   init();
-  document.querySelector('.js-title').classList.add('js-start');
-  document.querySelector('.js-title__logo').classList.add('js-container-lg');
-  document.querySelector('.js-title__copy').classList.add('js-container-sm');
+  title.classList.add('js-start');
+  rules.classList.toggle('js-rules--open');
+  setTimeout(() => {
+    titleLogo.classList.add('js-container-lg');
+    titleCopy.classList.add('js-container-sm');
+    rules.classList.toggle('js-hidden');
+  }, "250");
 });
 
 btnNew.addEventListener('click', function(){
   init();
-  document.querySelector('.js-final').classList.add('js-start');
+  finalScreen.classList.add('js-start');
 });
 
 btnInfo.addEventListener('click', function(){
-  console.log('clicked');
-  document.querySelector('.js-rules').classList.toggle('js-rules--open');
+  rules.classList.toggle('js-rules--open');
 });
 
 btnClose.addEventListener('click', function(){
-  document.querySelector('.js-rules').classList.remove('js-rules--open');
+  rules.classList.remove('js-rules--open');
 });

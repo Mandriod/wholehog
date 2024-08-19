@@ -80,13 +80,13 @@ button {
   -webkit-backdrop-filter: blur(0.75em);
   backdrop-filter: blur(0.75em);
   -webkit-box-shadow: 0 0 4em black;
-  box-shadow: 0 0 4em black;
-  isolation: isolate; }
+  box-shadow: 0 0 4em black; }
   .c-title__logo {
     background: #D90600;
     display: grid;
     grid-column: 1/ span 13;
-    grid-row: 1 / span 8; }
+    grid-row: 1 / span 8;
+    translate: 0 0 -2px; }
     .c-title__logo--container {
       place-self: center;
       width: -webkit-fit-content;
@@ -99,8 +99,8 @@ button {
     -ms-flex-align: center;
     align-items: center;
     background: #EAE9E4;
-    -webkit-box-shadow: 0 2em 4em black;
-    box-shadow: 0 2em 4em black;
+    -webkit-box-shadow: 0 0 2em black;
+    box-shadow: 0 0 2em black;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -116,9 +116,51 @@ button {
     justify-content: center;
     padding: 0 4vw;
     position: relative;
+    translate: 0 0 1px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
     text-align: center;
     width: 100%;
     z-index: 2; }
+    .c-title__copy .c-rules {
+      background: #EAE9E4;
+      -webkit-box-shadow: 0 0 1em black;
+      box-shadow: 0 0 1em black;
+      inset: auto 12vw 33vh 12vw;
+      padding: 2em;
+      position: absolute;
+      text-align: left;
+      translate: 0 200vh -1px;
+      -webkit-transition: translate 1s;
+      transition: translate 1s;
+      z-index: 1; }
+      .c-title__copy .c-rules--close {
+        cursor: pointer;
+        inset: 2em 2em auto auto;
+        position: absolute;
+        -webkit-transition: all 1s;
+        transition: all 1s;
+        z-index: 2; }
+        .c-title__copy .c-rules--close h4 {
+          border-radius: 100vw;
+          height: 1.25em;
+          line-height: 1.25;
+          margin: 0;
+          text-align: center;
+          -webkit-transition: all .5s;
+          transition: all .5s;
+          width: 1.25em; }
+          .c-title__copy .c-rules--close h4:hover {
+            background: #d4d2c7;
+            border-radius: 100vw;
+            color: #D90600;
+            -webkit-transition: all .5s;
+            transition: all .5s; }
+    .c-title__copy .js-rules--open {
+      translate: 0 0 -1px;
+      -webkit-transition: translate 1s;
+      transition: translate 1s;
+      z-index: -1; }
   .c-title .js-container-lg {
     z-index: 1; }
     .c-title .js-container-lg:before {
@@ -144,53 +186,20 @@ button {
     position: absolute;
     z-index: 3; }
     .c-title .c-info h4 {
+      border-radius: 100vw;
+      height: 1.25em;
+      line-height: 1.25;
       margin: 0;
+      text-align: center;
       -webkit-transition: all .5s;
-      transition: all .5s; }
+      transition: all .5s;
+      width: 1.25em; }
       .c-title .c-info h4:hover {
         background: #d4d2c7;
         border-radius: 100vw;
         color: #D90600;
         -webkit-transition: all .5s;
         transition: all .5s; }
-  .c-title .c-rules {
-    background: #EAE9E4;
-    inset: auto 12vw 33vh 12vw;
-    opacity: 0;
-    padding: 2em;
-    position: absolute;
-    translate: 0 100vh;
-    -webkit-transition: translate 1s, opacity 3s;
-    transition: translate 1s, opacity 3s;
-    z-index: 1; }
-    .c-title .c-rules--close {
-      cursor: pointer;
-      inset: 2em 2em auto auto;
-      position: absolute;
-      -webkit-transition: all 1s;
-      transition: all 1s; }
-      .c-title .c-rules--close .c-instructions {
-        background: #EAE9E4;
-        position: relative;
-        z-index: 1; }
-        .c-title .c-rules--close .c-instructions h4 {
-          border-radius: 100vw;
-          height: 1.25em;
-          line-height: 1.25;
-          text-align: center;
-          margin: 0;
-          width: 1.25em; }
-        .c-title .c-rules--close .c-instructions:hover {
-          background: #d4d2c7;
-          border-radius: 100vw;
-          color: #D90600;
-          -webkit-transition: all .5s;
-          transition: all .5s; }
-  .c-title .js-rules--open {
-    opacity: 1;
-    translate: unset;
-    -webkit-transition: translate 1s, opacity .25s;
-    transition: translate 1s, opacity .25s; }
   .c-title .js-hidden {
     display: none;
     -webkit-transition: all 1s;
@@ -451,7 +460,13 @@ button {
       place-self: center start; }
       .c-title__copy h3, .c-final__copy h3 {
         font-size: 2.5vw; }
+  .c-title__copy {
+    -webkit-box-shadow: 0 0 2em black;
+    box-shadow: 0 0 2em black;
+    translate: 0 0 2px; }
   .c-title .c-rules {
+    -webkit-box-shadow: 0 0 1em black;
+    box-shadow: 0 0 1em black;
     height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
@@ -459,14 +474,15 @@ button {
     padding: 2em 10vw 2em 2em;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    translate: 100vh 0;
-    -webkit-transition: translate 1s, opacity 3s;
-    transition: translate 1s, opacity 3s; }
+    translate: 100vw 0 1px;
+    -webkit-transition: translate 1s;
+    transition: translate 1s;
+    width: 50vw; }
     .c-title .c-rules--close {
       inset: 2em calc(2em + 10vw) auto auto; }
   .c-title .js-rules--open {
     opacity: 1;
-    translate: unset;
+    translate: -90vw 0 -1px;
     -webkit-transition: translate 1s, opacity .25s;
     transition: translate 1s, opacity .25s; }
   .c-game h3, .c-game h4 {
