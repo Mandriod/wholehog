@@ -20,6 +20,8 @@ const btnInfo = document.querySelector('.js-info');
 const btnClose = document.querySelector('.js-close');
 const active = document.querySelector('.js-active--player');
 const winner = document.querySelector('.js-winner');
+const forwardClass = "flip 1s cubic-bezier(.4,-.1,.2,1.2) forwards";
+const reverseClass = "flip 1s cubic-bezier(.4,-.1,.2,1.2) reverse";
 
 let currentPlayer, scores, currentScore, playing;
 
@@ -53,16 +55,31 @@ function randomNum(x, y) {
   return Math.floor(value)
 }
 
+function coinFlip() {
+  setTimeout(() => {
+    diceBlk.style.animation = randomNum(1,3) === 1 ? forwardClass : reverseClass;
+    diceWht.style.animation = randomNum(1,3) === 1 ? forwardClass : reverseClass;
+  }, 0);
+}
+
 btnRoll.addEventListener('click', function () {
   let blkDiceNum = randomNum(1,7);
   let whtDiceNum = randomNum(1,7);
   let diceNum = blkDiceNum + whtDiceNum
+
   if (playing) {
-    diceBlk.src = `images/dice-bk-${blkDiceNum}.svg`;
-    diceWht.src = `images/dice-wt-${whtDiceNum}.svg`;
+    setTimeout(() => {
+      diceBlk.src = `images/dice-bk-${blkDiceNum}.svg`;
+      diceWht.src = `images/dice-wt-${whtDiceNum}.svg`;
+    }, 500);
 
     console.log(blkDiceNum);
     console.log(whtDiceNum);
+
+    diceBlk.style.animation = "none";
+    diceWht.style.animation = "none";
+
+    coinFlip()
 
     if (blkDiceNum != 1 && whtDiceNum != 1) {
       currentScore += diceNum;

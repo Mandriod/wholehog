@@ -21,6 +21,8 @@ var btnInfo = document.querySelector('.js-info');
 var btnClose = document.querySelector('.js-close');
 var active = document.querySelector('.js-active--player');
 var winner = document.querySelector('.js-winner');
+var forwardClass = "flip 1s cubic-bezier(.4,-.1,.2,1.2) forwards";
+var reverseClass = "flip 1s cubic-bezier(.4,-.1,.2,1.2) reverse";
 var currentPlayer, scores, currentScore, playing;
 
 var init = function init() {
@@ -52,16 +54,28 @@ function randomNum(x, y) {
   return Math.floor(value);
 }
 
+function coinFlip() {
+  setTimeout(function () {
+    diceBlk.style.animation = randomNum(1, 3) === 1 ? forwardClass : reverseClass;
+    diceWht.style.animation = randomNum(1, 3) === 1 ? forwardClass : reverseClass;
+  }, 0);
+}
+
 btnRoll.addEventListener('click', function () {
   var blkDiceNum = randomNum(1, 7);
   var whtDiceNum = randomNum(1, 7);
   var diceNum = blkDiceNum + whtDiceNum;
 
   if (playing) {
-    diceBlk.src = "images/dice-bk-".concat(blkDiceNum, ".svg");
-    diceWht.src = "images/dice-wt-".concat(whtDiceNum, ".svg");
+    setTimeout(function () {
+      diceBlk.src = "images/dice-bk-".concat(blkDiceNum, ".svg");
+      diceWht.src = "images/dice-wt-".concat(whtDiceNum, ".svg");
+    }, 500);
     console.log(blkDiceNum);
     console.log(whtDiceNum);
+    diceBlk.style.animation = "none";
+    diceWht.style.animation = "none";
+    coinFlip();
 
     if (blkDiceNum != 1 && whtDiceNum != 1) {
       currentScore += diceNum;
