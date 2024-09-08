@@ -37,7 +37,6 @@ button {
 // layout
 
 .o-grid {
-  background: $white;
   display: grid;  
   grid-template-columns: repeat(13, 1fr);
   grid-template-rows: repeat(12, 1fr);
@@ -48,7 +47,7 @@ button {
 
 // title
 
-.c-title {
+.c-title, .c-final {
   gap: 0;
   background: none;
   backdrop-filter: blur(.75em);
@@ -366,6 +365,8 @@ button {
 
 .c-final {
   row-gap: 1em;
+  scale: 100%;
+  transition: all .25s;
 
   &__logo {
     align-items: center;
@@ -390,11 +391,17 @@ button {
   }
 
   &__copy {
+    background: $white;
     grid-column: 1 / span 13;
-    grid-row: 10 / span 3;
+    grid-row: 1 / span 13;
     place-self: center;
     text-align: center;
   }
+}
+
+.js-final-hidden {
+  scale: 0%;
+  transition: all .25s;
 }
 
 .js-start {
@@ -515,10 +522,10 @@ button {
     }
 
     &__copy {
-      grid-column: 11 / last-line;
-      grid-row: 1 / last-line;
+      grid-column: 11 / span 3;
+      grid-row: 1 / span 13;
       padding: 0 1vw;
-      place-self: center start;
+      width: 100%;
 
       h3 {
         font-size: 2.5vw;
@@ -531,6 +538,7 @@ button {
       box-shadow: 
         0 0 2em black;
         translate: 0 0 2px;
+        place-self: center start;
       }
 
     .c-rules {
@@ -677,8 +685,8 @@ button {
 
   .c-final {
     &__copy {
-      grid-row: 1 / last-line;
-
+      height: 100%;
+      place-self: center;
       h3 {
         font-size: clamp(2.5em, 2.5vw, 8em);
       }

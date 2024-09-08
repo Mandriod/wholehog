@@ -4,6 +4,8 @@ var title = document.querySelector('.js-title');
 var rules = document.querySelector('.js-rules');
 var titleLogo = document.querySelector('.js-title__logo');
 var titleCopy = document.querySelector('.js-title__copy');
+var finalLogo = document.querySelector('.js-final__logo');
+var finalCopy = document.querySelector('.js-final__copy');
 var finalScreen = document.querySelector('.js-final');
 var player0 = document.querySelector('.js-player--0');
 var score0 = document.querySelector('.js-player__0--score');
@@ -70,7 +72,7 @@ btnRoll.addEventListener('click', function () {
     setTimeout(function () {
       diceBlk.src = "images/dice-bk-".concat(blkDiceNum, ".svg");
       diceWht.src = "images/dice-wt-".concat(whtDiceNum, ".svg");
-    }, 500);
+    }, 250);
     console.log(blkDiceNum);
     console.log(whtDiceNum);
     diceBlk.style.animation = "none";
@@ -112,18 +114,16 @@ function holdBtn() {
       if (currentPlayer === 0) {
         console.log('player 1');
         winner.innerHTML = 'ONE';
-        finalScreen.classList.remove('js-hidden');
-        finalScreen.classList.remove('js-start');
-        playing = false;
       }
 
       if (currentPlayer === 1) {
         console.log('player 2');
         winner.innerHTML = 'TWO';
-        finalScreen.classList.remove('js-hidden');
-        finalScreen.classList.remove('js-start');
-        playing = false;
       }
+
+      finalScreen.classList.remove('js-final-hidden');
+      finalScreen.classList.remove('js-start');
+      playing = false;
     } else {
       switchPlayer();
     }
@@ -139,12 +139,21 @@ btnStart.addEventListener('click', function () {
     titleLogo.classList.add('js-container-lg');
     titleCopy.classList.add('js-container-sm');
     rules.classList.toggle('js-hidden');
-  }, "250");
+  }, 250);
 });
 btnNew.addEventListener('click', function () {
   init();
-  finalScreen.classList.toggle('js-start');
-  finalScreen.classList.toggle('js-hidden');
+  finalScreen.classList.add('js-start');
+  setTimeout(function () {
+    finalLogo.classList.add('js-container-lg');
+    finalCopy.classList.add('js-container-sm');
+  }, 250);
+  setTimeout(function () {
+    finalLogo.classList.remove('js-container-lg');
+    finalCopy.classList.remove('js-container-sm');
+    finalScreen.classList.remove('js-start');
+    finalScreen.classList.add('js-final-hidden');
+  }, 1250);
 });
 btnInfo.addEventListener('click', function () {
   rules.classList.toggle('js-rules--open');
