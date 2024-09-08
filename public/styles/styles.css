@@ -208,12 +208,14 @@ button {
 .c-game {
   background: #EAE9E4;
   height: 100vh;
+  isolation: isolate;
   overflow: hidden;
   text-align: center; }
   .c-game .o-players__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr 1fr; }
+    grid-template-rows: 1fr 1fr;
+    z-index: 2; }
   .c-game .o-player {
     grid-column: 1 / span 1;
     grid-row: 1 / span 2;
@@ -273,7 +275,8 @@ button {
     grid-template-columns: .25fr 2fr 2fr .25fr;
     grid-template-rows: .5fr 2fr 1fr .5fr;
     gap: 2%;
-    justify-items: center; }
+    justify-items: center;
+    z-index: 3; }
     .c-game .c-die img {
       width: clamp(12em, 100%, 15em); }
     .c-game .c-die__blk {
@@ -306,10 +309,19 @@ button {
         background: #262626;
         -webkit-transition: background .5s;
         transition: background .5s; }
-  .c-game .js-active {
+  .c-game .js-active--player {
     background: #D90600;
-    height: 100%;
-    width: 100%; }
+    grid-column: 1 / span 13;
+    grid-row: 1 / span 13;
+    height: 50%;
+    -webkit-transition: all .65s;
+    transition: all .65s;
+    -webkit-transition-timing-function: cubic-bezier(0.59, 0, 0.39, 2.5);
+    transition-timing-function: cubic-bezier(0.59, 0, 0.39, 2.5);
+    width: 100%;
+    z-index: 1; }
+  .c-game .js-act {
+    translate: 0 100%; }
 
 .c-final {
   row-gap: 1em; }
@@ -550,6 +562,12 @@ button {
       align-self: start;
       grid-column: 1 / span 2;
       grid-row: 5 / span 1; }
+  .c-game .js-active--player {
+    background: #D90600;
+    height: 100%;
+    width: 50%; }
+  .c-game .js-act {
+    translate: 100% 0; }
   .c-final__copy {
     grid-row: 1 / last-line; }
     .c-final__copy h3 {

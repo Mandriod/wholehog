@@ -195,6 +195,7 @@ button {
 .c-game {
   background: $white;
   height: 100vh;
+  isolation: isolate;
   overflow: hidden;
   text-align: center;
 
@@ -202,6 +203,7 @@ button {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr 1fr;
+    z-index: 2;
   }
 
   .o-player {
@@ -281,6 +283,7 @@ button {
     grid-template-rows: .5fr 2fr 1fr .5fr;
     gap: 2%;
     justify-items: center;
+    z-index: 3;
 
     img {
       width: clamp(12em, 100%, 15em);
@@ -329,10 +332,25 @@ button {
     }
   }
 
-  .js-active {
+  // .js-active {
+  //   background: $red;
+  //   height: 100%;
+  //   width: 100%;
+  // }
+
+  .js-active--player {
     background: $red;
-    height: 100%;
+    grid-column: 1 / span 13;
+    grid-row: 1 / span 13;
+    height: 50%;
+    transition: all .65s;
+    transition-timing-function: cubic-bezier(.59,0,.39,2.5);
     width: 100%;
+    z-index: 1;
+  }
+
+  .js-act {
+    translate: 0 100%;
   }
 }
 
@@ -634,6 +652,16 @@ button {
         grid-column: 1 / span 2;
         grid-row: 5 / span 1;
       }
+    }
+
+    .js-active--player {
+      background: $red;
+      height: 100%;
+      width: 50%;
+    }
+
+    .js-act {
+      translate: 100% 0;
     }
   }
 

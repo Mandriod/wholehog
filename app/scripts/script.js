@@ -18,6 +18,7 @@ const btnStart = document.querySelector('.js-btn--start');
 const btnNew = document.querySelector('.js-btn--new');
 const btnInfo = document.querySelector('.js-info');
 const btnClose = document.querySelector('.js-close');
+const act = document.querySelector('.js-active--player');
 
 let currentPlayer, scores, currentScore, playing;
 
@@ -35,6 +36,7 @@ const init = function () {
   player1.classList.remove('player--winner');
   player0.classList.add('js-active');
   player1.classList.remove('js-active');
+  act.classList.remove('js-act');
 };
 
 init();
@@ -44,8 +46,10 @@ const switchPlayer = function () {
   document.querySelector(`.js-player__${currentPlayer}--current`).textContent =
     currentScore;
   currentPlayer === 0 ? (currentPlayer = 1) : (currentPlayer = 0);
-  player0.classList.toggle('js-active');
-  player1.classList.toggle('js-active');
+  // player0.classList.toggle('js-active');
+  // player1.classList.toggle('js-active');
+  act.classList.toggle('js-act');
+  
 };
 
 function randomNum(x, y) {
