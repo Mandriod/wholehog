@@ -337,12 +337,6 @@ button {
     }
   }
 
-  // .js-active {
-  //   background: $red;
-  //   height: 100%;
-  //   width: 100%;
-  // }
-
   .js-active--player {
     background: $red;
     grid-column: 1 / span 13;
@@ -354,7 +348,7 @@ button {
     z-index: 1;
   }
 
-  .js-act {
+  .js-active {
     translate: 0 100%;
   }
 }
@@ -665,7 +659,7 @@ button {
       width: 50%;
     }
 
-    .js-act {
+    .js-active {
       translate: 100% 0;
     }
   }

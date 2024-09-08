@@ -19,7 +19,7 @@ var btnStart = document.querySelector('.js-btn--start');
 var btnNew = document.querySelector('.js-btn--new');
 var btnInfo = document.querySelector('.js-info');
 var btnClose = document.querySelector('.js-close');
-var act = document.querySelector('.js-active--player');
+var active = document.querySelector('.js-active--player');
 var winner = document.querySelector('.js-winner');
 var currentPlayer, scores, currentScore, playing;
 
@@ -34,9 +34,7 @@ var init = function init() {
   playing = true;
   player0.classList.remove('player--winner');
   player1.classList.remove('player--winner');
-  player0.classList.add('js-active');
-  player1.classList.remove('js-active');
-  act.classList.remove('js-act');
+  active.classList.remove('js-active');
 };
 
 init();
@@ -44,10 +42,8 @@ init();
 var switchPlayer = function switchPlayer() {
   currentScore = 0;
   document.querySelector(".js-player__".concat(currentPlayer, "--current")).textContent = currentScore;
-  currentPlayer === 0 ? currentPlayer = 1 : currentPlayer = 0; // player0.classList.toggle('js-active');
-  // player1.classList.toggle('js-active');
-
-  act.classList.toggle('js-act');
+  currentPlayer === 0 ? currentPlayer = 1 : currentPlayer = 0;
+  active.classList.toggle('js-active');
   btnHold.classList.remove('c-die--hold--disabled');
 };
 

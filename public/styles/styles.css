@@ -323,7 +323,7 @@ button {
     transition-timing-function: cubic-bezier(0.59, 0, 0.39, 2.5);
     width: 100%;
     z-index: 1; }
-  .c-game .js-act {
+  .c-game .js-active {
     translate: 0 100%; }
 
 .c-final {
@@ -569,7 +569,7 @@ button {
     background: #D90600;
     height: 100%;
     width: 50%; }
-  .c-game .js-act {
+  .c-game .js-active {
     translate: 100% 0; }
   .c-final__copy {
     grid-row: 1 / last-line; }
