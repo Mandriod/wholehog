@@ -48,6 +48,7 @@ var switchPlayer = function switchPlayer() {
   // player1.classList.toggle('js-active');
 
   act.classList.toggle('js-act');
+  btnHold.classList.remove('c-die--hold--disabled');
 };
 
 function randomNum(x, y) {
@@ -69,6 +70,8 @@ btnRoll.addEventListener('click', function () {
     if (blkDiceNum != 1 && whtDiceNum != 1) {
       currentScore += diceNum;
       document.querySelector(".js-player__".concat(currentPlayer, "--current")).textContent = currentScore;
+      btnHold.addEventListener('click', holdBtn);
+      btnHold.classList.remove('c-die--hold--disabled');
     }
 
     if (blkDiceNum == 1 && whtDiceNum == 1) {
@@ -76,12 +79,21 @@ btnRoll.addEventListener('click', function () {
       document.querySelector(".js-player__".concat(currentPlayer, "--score")).textContent = scores["".concat(currentPlayer)];
     }
 
+    if (blkDiceNum == whtDiceNum) {
+      console.log("equal dice"); // disable hold score button in style
+      // disable hold score button event listener
+
+      btnHold.removeEventListener('click', holdBtn);
+      btnHold.classList.add('c-die--hold--disabled');
+    }
+
     if (blkDiceNum == 1 || whtDiceNum == 1) {
       switchPlayer();
     }
   }
 });
-btnHold.addEventListener('click', function () {
+
+function holdBtn() {
   if (playing) {
     scores["".concat(currentPlayer)] += currentScore;
     document.querySelector(".js-player__".concat(currentPlayer, "--score")).textContent = scores["".concat(currentPlayer)];
@@ -94,7 +106,25 @@ btnHold.addEventListener('click', function () {
       switchPlayer();
     }
   }
-});
+}
+
+btnHold.addEventListener('click', holdBtn); // btnHold.addEventListener('click', function () {
+//   if (playing) {
+//     scores[`${currentPlayer}`] += currentScore;
+//     document.querySelector(`.js-player__${currentPlayer}--score`).textContent =
+//       scores[`${currentPlayer}`];
+//     if (scores[`${currentPlayer}`] >= 100) {
+//       document
+//         .querySelector(`.js-player__${currentPlayer}--score`)
+//         .classList.add('player--winner');
+//       finalScreen.classList.remove('js-hidden')
+//       playing = false;
+//     } else {
+//       switchPlayer();
+//     }
+//   }
+// });
+
 btnStart.addEventListener('click', function () {
   init();
   title.classList.add('js-start');

@@ -309,6 +309,9 @@ button {
         background: #262626;
         -webkit-transition: background .5s;
         transition: background .5s; }
+      .c-game .c-die--hold--disabled {
+        background: gray;
+        cursor: not-allowed; }
   .c-game .js-active--player {
     background: #D90600;
     grid-column: 1 / span 13;

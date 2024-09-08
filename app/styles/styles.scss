@@ -329,6 +329,11 @@ button {
         background: lighten($black, 15%);
         transition: background .5s;
       }
+
+      &--disabled {
+        background: lighten($black, 50%);
+        cursor: not-allowed;
+      }
     }
   }
 

@@ -49,7 +49,7 @@ const switchPlayer = function () {
   // player0.classList.toggle('js-active');
   // player1.classList.toggle('js-active');
   act.classList.toggle('js-act');
-  
+  btnHold.classList.remove('c-die--hold--disabled');
 };
 
 function randomNum(x, y) {
@@ -72,17 +72,25 @@ btnRoll.addEventListener('click', function () {
       currentScore += diceNum;
       document.querySelector(`.js-player__${currentPlayer}--current`).textContent =
         currentScore;
+      btnHold.addEventListener('click', holdBtn);
+      btnHold.classList.remove('c-die--hold--disabled');
     } if (blkDiceNum == 1 && whtDiceNum == 1) {
       scores[`${currentPlayer}`] = 0;
       document.querySelector(`.js-player__${currentPlayer}--score`).textContent =
       scores[`${currentPlayer}`];
+    } if (blkDiceNum == whtDiceNum) {
+      console.log("equal dice");
+      // disable hold score button in style
+      // disable hold score button event listener
+      btnHold.removeEventListener('click', holdBtn);
+      btnHold.classList.add('c-die--hold--disabled');
     } if (blkDiceNum == 1 || whtDiceNum == 1) {
       switchPlayer();
     }
   }
 });
 
-btnHold.addEventListener('click', function () {
+function holdBtn() {
   if (playing) {
     scores[`${currentPlayer}`] += currentScore;
     document.querySelector(`.js-player__${currentPlayer}--score`).textContent =
@@ -97,7 +105,26 @@ btnHold.addEventListener('click', function () {
       switchPlayer();
     }
   }
-});
+}
+
+btnHold.addEventListener('click', holdBtn);
+
+// btnHold.addEventListener('click', function () {
+//   if (playing) {
+//     scores[`${currentPlayer}`] += currentScore;
+//     document.querySelector(`.js-player__${currentPlayer}--score`).textContent =
+//       scores[`${currentPlayer}`];
+//     if (scores[`${currentPlayer}`] >= 100) {
+//       document
+//         .querySelector(`.js-player__${currentPlayer}--score`)
+//         .classList.add('player--winner');
+//       finalScreen.classList.remove('js-hidden')
+//       playing = false;
+//     } else {
+//       switchPlayer();
+//     }
+//   }
+// });
 
 
 btnStart.addEventListener('click', function(){
