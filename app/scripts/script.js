@@ -19,6 +19,7 @@ const btnNew = document.querySelector('.js-btn--new');
 const btnInfo = document.querySelector('.js-info');
 const btnClose = document.querySelector('.js-close');
 const act = document.querySelector('.js-active--player');
+const winner = document.querySelector('.js-winner');
 
 let currentPlayer, scores, currentScore, playing;
 
@@ -31,7 +32,6 @@ const init = function () {
   scores = [0, 0];
   currentScore = 0;
   playing = true;
-  // dice.classList.add('hidden');
   player0.classList.remove('player--winner');
   player1.classList.remove('player--winner');
   player0.classList.add('js-active');
@@ -95,12 +95,20 @@ function holdBtn() {
     scores[`${currentPlayer}`] += currentScore;
     document.querySelector(`.js-player__${currentPlayer}--score`).textContent =
       scores[`${currentPlayer}`];
-    if (scores[`${currentPlayer}`] >= 100) {
-      document
-        .querySelector(`.js-player__${currentPlayer}--score`)
-        .classList.add('player--winner');
-      finalScreen.classList.remove('js-hidden')
-      playing = false;
+    if (scores[`${currentPlayer}`] >= 20) {
+      if (currentPlayer === 0) {
+        console.log('player 1');
+        winner.innerHTML = 'ONE';
+        finalScreen.classList.remove('js-hidden');
+        finalScreen.classList.remove('js-start');
+        playing = false;
+      } if (currentPlayer === 1) {
+        console.log('player 2');
+        winner.innerHTML = 'TWO';
+        finalScreen.classList.remove('js-hidden');
+        finalScreen.classList.remove('js-start');
+        playing = false;
+      }
     } else {
       switchPlayer();
     }
@@ -108,23 +116,6 @@ function holdBtn() {
 }
 
 btnHold.addEventListener('click', holdBtn);
-
-// btnHold.addEventListener('click', function () {
-//   if (playing) {
-//     scores[`${currentPlayer}`] += currentScore;
-//     document.querySelector(`.js-player__${currentPlayer}--score`).textContent =
-//       scores[`${currentPlayer}`];
-//     if (scores[`${currentPlayer}`] >= 100) {
-//       document
-//         .querySelector(`.js-player__${currentPlayer}--score`)
-//         .classList.add('player--winner');
-//       finalScreen.classList.remove('js-hidden')
-//       playing = false;
-//     } else {
-//       switchPlayer();
-//     }
-//   }
-// });
 
 
 btnStart.addEventListener('click', function(){
@@ -140,7 +131,8 @@ btnStart.addEventListener('click', function(){
 
 btnNew.addEventListener('click', function(){
   init();
-  finalScreen.classList.add('js-start');
+  finalScreen.classList.toggle('js-start');
+  finalScreen.classList.toggle('js-hidden')
 });
 
 btnInfo.addEventListener('click', function(){
